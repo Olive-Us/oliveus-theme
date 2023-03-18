@@ -1,0 +1,144 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: FAQs
+-->
+{% set faqs = {
+  parents: [
+    {
+      header: "How can I write a review?",
+      body: "We use a 5-star review, you’ll get an alert immediately after your booking to review your family. The sitter can see your star rating, not the comments."
+    },
+    {
+      header: "Should I complete the matching questionnaire?",
+      body: "This is a 100% MUST! The questionnaire is what makes Olive Us so unique! Our background is all about matchmaking! We have created this matching algorithm, so you have the very best match possible!"
+    },
+    {
+      header: "What if I am unhappy with a sitter I booked?",
+      body: "This is a great opportunity to get a starred review. You are also able to add any comments in yor review. Please remember that everyone can see these comments."
+    },
+    {
+      header: "Why favorite a sitter?",
+      body: "Favoriting a sitter will keep your fav sitters on your dashboard and easy to find. You can also send a request to all of your favorite sitters at once."
+    },
+    {
+      header: "How does tipping my sitter work?",
+      body: "You will have a request to pay your sitter followed by a typing screen. You are welcome to tip your sitter. They did a great job!"
+    },
+    {
+      header: "Do I need to tip my sitter?",
+      body: "You do not need to tip your sitter. However, if they did a great job and your kids had a great time, it’s a great way to show appreciation."
+    },
+    {
+      header: "What is the cost structure?",
+      body: "Olive Us has a subscription model, which allows you to book as many sitters as you like in a month! There is also a small service fee to process payments."
+    },
+    {
+      header: "Are their age restrictions?",
+      body: "Olive Us is built with experience in mind. We require all sitters to be at least 16 years of age."
+    },
+    {
+      header: "Why video chat?",
+      body: "The video chat feature was created as an interview tool. You can video chat with any candidates and introduce them to your kiddos. This way you know a little bit about each other before a booking."
+    },
+    {
+      header: "Can I add a sitter I already know?",
+      body: "Absolutely! Just have your sitter download the sitter app and make a profile. You can then search for your sitter, add to favorites, and book!"
+    },
+    {
+      header: "What is a sitter is too late or cancels a booking?",
+      body: "You can send out another request if your sitter cancels a booking."
+    },
+    {
+      header: "How do I change my password?",
+      body: "Go to your profile to change your password."
+    },
+    {
+      header: "How do I delete my account?",
+      body: "Under the Settings nav, you'll find a 'Delete Account' button."
+    }
+  ],
+  sitters: [
+    {
+      header: "Why Olive Us?",
+      body: "Olive Us is a childcare app created with over 30 years in the nanny industry. Olive Us uses a matching algorithm to find the perfect match based on your personality and childcare philosophies. We use a percentage as our matching gauge to find you the best fit!"
+    },
+    {
+      header: "How can I write a review?",
+      body: "We use a 5-star review, you’ll get an alert immediately after your booking to review your sitter. Families will be able to see your reviews."
+    },
+    {
+      header: "What if I am unhappy with a family I booked?",
+      body: "This is a great opportunity to leave a starred review. You are also able to add any comments in your review. Only that family can read your comments."
+    },
+    {
+      header: "Is there a fee for sitters?",
+      body: "There are no fees for sitters. However, we do encourage you to purchase a background check."
+    },
+    {
+      header: "Are there any age restrictions?",
+      body: "Olive Us is built with experience in mind. We require all sitters to be at least 16 years of age."
+    },
+    {
+      header: "Should I complete the matching questionnaire?",
+      body: "This is a 100% MUST! The questionnaire is what makes Olive Us so unique! Our background is all about matchmaking! We have created this matching algorithm so you have the very best match possible!"
+    },
+    {
+      header: "Why video chat?",
+      body: "The video chat feature was created as an interview tool. You can video chat with any candidates and introduce them to your kiddos. This way you know a little bit about each other before a booking."
+    },
+    {
+      header: "How do I change my password?",
+      body: "Go to your profile to change your password."
+    },
+    {
+      header: "How do I delete my account?",
+      body: "Under the Settings nav, you'll find a 'Delete Account' button."
+    }
+  ]
+} %}
+
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+
+<main class="container">
+  <section class="row mb-5 pb-5">
+    <h1 class="mb-4">FAQs</h1>
+    <h2 class="mb-4">Parents</h2>
+    <div class="accordion" id="accordionParent">
+      {% for faq in faqs.parents %}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-parent-{{loop.index}}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-parent-{{loop.index}}" aria-expanded="false" aria-controls="collapse-parent-{{loop.index}}">
+            <strong>{{ faq.header }}</strong>
+          </button>
+        </h2>
+        <div id="collapse-parent-{{loop.index}}" class="accordion-collapse collapse" aria-labelledby="heading-parent-{{loop.index}}" data-bs-parent="#accordionParent">
+          <div class="accordion-body">
+            {{ faq.body }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <h2 class="my-4">Sitters</h2>
+    <div class="accordion" id="accordionSitter">
+      {% for faq in faqs.sitters %}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-sitter-{{loop.index}}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-sitter-{{loop.index}}" aria-expanded="false" aria-controls="collapse-sitter-{{loop.index}}">
+            <strong>{{ faq.header }}</strong>
+          </button>
+        </h2>
+        <div id="collapse-sitter-{{loop.index}}" class="accordion-collapse collapse" aria-labelledby="heading-sitter-{{loop.index}}" data-bs-parent="#accordionSitter">
+          <div class="accordion-body">
+            {{ faq.body }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</main>
+{% endblock body %}

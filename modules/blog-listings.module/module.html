@@ -1,0 +1,87 @@
+{% if blog_author %}
+  <h2 class="blog-author-heading">{{ module.blog_author_listing.subheading }} {{ blog_author.display_name }}:</h2>
+{% endif %}
+
+{# Blog tag listing header #}
+
+{% if tag %}
+  <h2 class="blog-tag-heading">{{ module.blog_tag_listing.subheading }} {{ page_meta.html_title|split(" | ")|last }}:</h2>
+{% endif %}
+
+{# Blog listing #}
+
+<section class="blog-index">
+
+  {% for content in contents %}
+
+    {# Blog listing article #}
+
+    <article class="blog-index__post blog-index__post--{{ list_type }}" aria-label="Blog post summary: {{ content.name }}" style="max-width: 300px">
+
+      {# Featured image #}
+
+      {% if content.featured_image and module.featured_image %}
+        <a class="blog-index__post-image-wrapper blog-index__post-image-wrapper--{{ list_type }}" href="{{ content.absolute_url }}" aria-label="{% if content.featured_image_alt_text %}Featured image: {{ content.featured_image_alt_text }} - {% endif %}Read full post: {{ content.name }}" style="padding-bottom: 1rem">
+          <img class="blog-index__post-image blog-index__post-image--{{ list_type }}" src="{{ content.featured_image }}" loading="lazy" alt="{{ content.featured_image_alt_text }}" style="width: 100%;">
+        </a>
+      {% endif %}
+
+      {# Article content #}
+
+      <div class="blog-index__post-content  blog-index__post-content--{{ list_type }}">
+
+        {# Tags #}
+
+        {% if module.tags and content.tag_list %}
+          <div class="blog-index__post-tags">
+            {% for tag in content.tag_list %}
+              <a class="blog-index__post-tag" href="{{ blog_tag_url(group.id, tag.slug) }}">{{ tag.name }}</a>{% if !loop.last %}<span>, </span>{% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {# Title #}
+
+        {% if module.title %}
+          <h2 class="blog-index__post-title"><a class="blog-index__post-title-link" href="{{ content.absolute_url }}">{{ content.name }}</a></h2>
+        {% endif %}
+
+        {# Author #}
+
+        {% if module.author and content.blog_author %}
+          <div class="blog-index__post-author">
+            {% if content.blog_author.avatar %}
+              <img class="blog-index__post-author-image" src="{{ content.blog_author.avatar }}" width="30" loading="lazy" alt="Picture of {{ content.blog_author.display_name }}">
+            {% endif %}
+            <a class="blog-index__post-author-name" href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}">{{ content.blog_author.display_name }}</a>
+          </div>
+        {% endif %}
+
+        {# Publish date #}
+
+        {% if module.publish_date %}
+          <time class="blog-index__post-timestamp" datetime="{{ content.publish_date }}">
+            {{ content.publish_date_localized }}
+          </time>
+        {% endif %}
+
+        {# Summary #}
+
+        {% if module.description %}
+          <div class="blog-index__post-summary">
+            {{ content.post_list_content|truncatehtml(100) }}
+          </div>
+        {% endif %}
+
+        {# Read more button #}
+
+        {% if module.button %}
+          <div class="blog-index__post-button-wrapper">
+            <a class="blog-index__post-button button" href="{{ content.absolute_url }}">{{ module.button_text }}</a>
+          </div>
+        {% endif %}
+
+      </div>
+    </article>
+  {% endfor %}
+</section>

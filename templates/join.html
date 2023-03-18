@@ -1,0 +1,78 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Join
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="container">
+  <section class="row mb-5 pb-5">
+    <div class="col-md-5">
+      <h1 class="text-primary mb-4">
+        "It takes a village. It takes Olive Us"
+      </h1>
+      <h2 class="mb-4">
+        Olive Us is a simple app to find your perfect Match
+      </h2>
+      <h3 class="text-black fw-bold mb-5">#ittakesoliveus</h3>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-dashboard.webp" alt="phone-dashboard" style="max-width: 200px;">
+        </div>
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-sitter.webp" alt="phone-sitter" style="max-width: 200px;">
+        </div>
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-sitters.webp" alt="phone-sitters" style="max-width: 200px;">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="my-5" id="download">
+    <h2 class="text-primary text-center mb-4">Download</h2>
+    <div class="d-flex justify-content-around">
+      <div style="max-width: 300px">
+        <a href="https://apps.apple.com/us/app/oliveus-sitter/id1627455487" target="_blank">
+          <img class="mx-2 w-100" src="https://oliveusapp.com/hubfs/ios-black.webp" alt="download-ios">
+        </a>
+      </div>
+      <div style="max-width: 300px">
+        <img class="mx-2 w-100" src="https://oliveusapp.com/hubfs/android-gray.webp" alt="download-android">
+        <h4 class="text-center">Coming Soon!</h4>
+      </div>
+    </div>
+  </section>
+  <section class="my-5 border border-primary rounded p-3" id="join">
+    <h2 class="text-primary mb-3 text-center">Join Olive Us</h2>
+    <h4 class="text-center">Sitters! Want to be part of our community?</h4>
+    <p>
+      Our app helps you connect with your ideal family that match your personality and your
+      strengths. If you are passionate and love working with kids, <a href="#download">Download the Olive Us App!</a>
+    </p>
+    <h3 class="text-primary">Steps to Join Olive Us</h3>
+    <p>Olive Us can easily help you:</p>
+    <ul class="list-unstyled">
+      <li class="li-plus">Run your Background Check, this helps you book more jobs</li>
+      <li class="li-plus">Take our perfected Matching Questionnaire to match you with the best families</li>
+      <li class="li-plus">Create your profile. Record a 20 sec video introducing yourself and your qualities</li>
+      <li class="li-plus">Choose your hourly rate</li>
+    </ul>
+    <p>Don't forget to connect with us on Instagram to be a Sitter Highlight &amp; be part of Olive Us!</p>
+  </section>
+  <section class="text-center my-4">
+    <h3 class="text-primary mb-4">Have a Question?</h3>
+    <p class="mb-4">We respect your privacy.</p>
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+    <script>
+      hbspt.forms.create({
+        region: "na1",
+        portalId: "21834940",
+        formId: "a9478fa6-d1e8-4dcc-91e8-83d7e1688f1f"
+      });
+    </script>
+  </section>
+</main>
+{% endblock body %}
