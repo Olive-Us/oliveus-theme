@@ -38,16 +38,42 @@
     </div>
   </section>
   <section class="my-5" id="download">
-    <h2 class="text-primary text-center mb-4">Download</h2>
-    <div class="d-flex justify-content-around">
-      <div style="max-width: 300px">
-        <a href="https://apps.apple.com/us/app/oliveus-parent/id1616319213" target="_blank">
-          <img class="mx-2 w-100" src="https://oliveusapp.com/hubfs/ios-black.webp" alt="download-ios">
-        </a>
+    <h2 class="text-primary text-center mb-4">
+      <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="parent-tab" data-bs-toggle="tab" data-bs-target="#parent-tab-pane" type="button" role="tab" aria-controls="parent-tab-pane" aria-selected="true">Download Family</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="sitter-tab" data-bs-toggle="tab" data-bs-target="#sitter-tab-pane" type="button" role="tab" aria-controls="sitter-tab-pane" aria-selected="false">Download Sitter</button>
+        </li>
+      </ul>
+    </h2>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="parent-tab-pane" role="tabpanel" aria-labelledby="parent-tab" tabindex="0">
+        <div class="d-flex justify-content-around">
+          <div style="max-width: 300px; flex: 1">
+            <a href="https://apps.apple.com/us/app/oliveus-parent/id1616319213" target="_blank">
+              <img class="me-2" src="https://oliveusapp.com/hubfs/ios-black.webp" alt="download-ios" style="width: 94%; height: auto;">
+            </a>
+          </div>
+          <div style="max-width: 300px; flex: 1">
+            <img class="w-100" src="https://oliveusapp.com/hubfs/android-gray.webp" alt="download-android">
+            <h4 class="text-center">Coming Soon!</h4>
+          </div>
+        </div>
       </div>
-      <div style="max-width: 300px">
-        <img class="mx-2 w-100" src="https://oliveusapp.com/hubfs/android-gray.webp" alt="download-android">
-        <h4 class="text-center">Coming Soon!</h4>
+      <div class="tab-pane fade" id="sitter-tab-pane" role="tabpanel" aria-labelledby="sitter-tab" tabindex="0">
+        <div class="d-flex justify-content-around">
+          <div style="max-width: 300px; flex: 1">
+            <a href="https://apps.apple.com/us/app/oliveus-sitter/id1627455487" target="_blank">
+              <img class="me-2" src="https://oliveusapp.com/hubfs/ios-black.webp" alt="download-ios" style="width: 94%; height: auto;">
+            </a>
+          </div>
+          <div style="max-width: 300px; flex: 1">
+            <img class="w-100" src="https://oliveusapp.com/hubfs/android-gray.webp" alt="download-android">
+            <h4 class="text-center">Coming Soon!</h4>
+          </div>
+        </div>
       </div>
     </div>
   </section>

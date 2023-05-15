@@ -1,0 +1,80 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Store
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="container">
+  <section class="mb-5">
+    <h1 class="text-primary text-center mb-4">Olive Us Store</h1>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card mb-4">
+          <img src="https://oliveusapp.com/hubfs/mom-whisper.webp" class="card-img-top" alt="mom-whisper">
+          <div class="card-body">
+            <h5 class="card-title">Gift Card</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">$20.00</h6>
+            <p class="card-text">Give someone you love the gift of time!</p>
+            <a href="https://buy.stripe.com/eVa3eMfUJfOLdIAeUU" class="btn btn-custom-primary buy-button w-100">Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card mb-4">
+          <img src="https://oliveusapp.com/hubfs/yellow-umbrella.webp" class="card-img-top" alt="yellow-umbrella">
+          <div class="card-body">
+            <h5 class="card-title">Gift Card</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">$50.00</h6>
+            <p class="card-text">Give someone you love the gift of time!</p>
+            <a href="https://buy.stripe.com/7sIaHefUJ1XV1ZS001" class="btn btn-custom-primary buy-button w-100">Buy</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card mb-4">
+          <img src="https://oliveusapp.com/hubfs/arms.webp" class="card-img-top" alt="arms">
+          <div class="card-body">
+            <h5 class="card-title">Gift Card</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">$100.00</h6>
+            <p class="card-text">Give someone you love the gift of time!</p>
+            <div class="d-flex justify-contents-center w-100">
+              <a href="https://buy.stripe.com/7sIaHe7odeKHeMEfZ0" class="btn btn-custom-primary buy-button w-100">Buy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="row mb-5 pb-5">
+    <div class="col-md-5">
+      <h1 class="text-primary mb-4">
+        "It takes a village. It takes Olive Us"
+      </h1>
+      <h2 class="mb-4">
+        Olive Us is a simple app to find your perfect Match
+      </h2>
+      <h3 class="text-black fw-bold mb-5">#ittakesoliveus</h3>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-dashboard.webp" alt="phone-dashboard" style="max-width: 200px;">
+        </div>
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-sitter.webp" alt="phone-sitter" style="max-width: 200px;">
+        </div>
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-sitters.webp" alt="phone-sitters" style="max-width: 200px;">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+  [...document.querySelectorAll('.buy-button')].forEach((el) => {
+    el.setAttribute('href', el.getAttribute('href') + location.search);
+  });
+</script>
+{% endblock body %}
