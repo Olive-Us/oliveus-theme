@@ -1,0 +1,104 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Sitter
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main class="container">
+  <section class="mb-5 pb-5" id="sitter-section">
+    <!-- Sitter info will be inserted here -->
+  </section>
+  <section class="row my-5 py-5">
+    <div class="col-md-5">
+      <h1 class="text-primary mb-4">
+        "It takes a village. It takes Olive Us"
+      </h1>
+      <h2 class="mb-4">
+        Olive Us is a simple app to find your perfect Match
+      </h2>
+      <h3 class="text-black fw-bold mb-5">#ittakesoliveus</h3>
+    </div>
+    <div class="col-md-7">
+      <div class="row">
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-dashboard.webp" alt="phone-dashboard" style="max-width: 200px;">
+        </div>
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-sitter.webp" alt="phone-sitter" style="max-width: 200px;">
+        </div>
+        <div class="col-4 d-flex justify-content-center p-0">
+          <img class="w-100" src="https://oliveusapp.com/hubfs/phone-sitters.webp" alt="phone-sitters" style="max-width: 200px;">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+  window.onload = async () => {
+    const params = new URLSearchParams(document.location.search);
+    const sitterUuid = params.get('uuid');
+    const {profile, reviews} = await (await fetch(`https://oliveus-sitters.kevin-873.workers.dev/?uuid=${sitterUuid}`)).json();
+    document.querySelector('#sitter-section').insertAdjacentHTML('beforeend', `
+      <div class="row mb-4 d-flex align-items-center">
+        <div class="col-md-4">
+          <div class="rounded-circle" style="height: 200px; width:200px; background-image: url(https://api.oliveusapp.com/api/v1/unauth/sitters/file?url=sitters/${sitterUuid}); background-repeat: no-repeat; background-position: center center; background-size: cover;"></div>
+        </div>
+        <div class="col-md-8">
+          <div class="d-flex align-items-end">
+            <h1 class="me-3 mb-0">${profile.firstName} ${profile.lastName}</h1> <small class="mb-1">${profile.age}</small>
+          </div>
+          ${profile.averageRating ? new Array(Math.floor(profile.averageRating)).fill('<i class="bi bi-star-fill text-primary"></i>').join('') : ''}${profile.averageRating % 1 ? '<i class="bi bi-star-half text-primary"></i>' : ''}${profile.averageRating ? ` (${profile.reviewsCount})` : ''}
+          <h4 class="text-muted">${profile.bio || ''}</h4>
+        </div>
+      </div>
+      ${profile.additionalServicesAndTags.map(skill => `<span class="badge bg-primary">${skill}</span>`).join(' ')}
+      <ol class="list-group mt-5">
+        ${
+          reviews.content.map(review => `
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-auto">
+                <div class="fw-bold">${review.reviewerFirstName === 'Previous' ? 'Previous Family' : review.reviewerFirstName }</div>
+                ${review.text}
+              </div>
+              <span class="badge bg-primary rounded-pill">${review.rating}</span>
+            </li>
+          `).join('')
+        }
+      </ol>
+      <form id="submit-rating">
+        <div class="input-group mt-4">
+            <input type="text" name="text" class="form-control flex-grow-1 flex-shrink-0" placeholder="Know ${profile.firstName}? Leave a Review!" required>
+            <select class="form-select flex-shrink-1 flex-grow-0" style="width: 120px" name="rating" required>
+              <option selected disabled>Rating</option>
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+            <input type="hidden" name="reviewedId" value="${sitterUuid}">
+            <button class="btn btn-custom-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    `);
+    document.querySelector('#submit-rating').addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const formData = new FormData(e.target);
+      const object = {};
+      (new FormData(e.target)).forEach((value, key) => object[key] = value);
+      fetch(`https://api.oliveusapp.com/api/v1/unauth/reviews/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(object),
+      }).then(res => {
+        location.reload();
+      });
+    })
+  }
+</script>
+{% endblock body %}
